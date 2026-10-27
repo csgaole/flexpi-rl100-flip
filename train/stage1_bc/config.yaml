@@ -1,0 +1,31 @@
+# Stage-1 BC — Flex-π fine-tune recipe stub
+# Knobs named to mirror Flex-π Hydra configs under /workspace/flex-pi/configs
+# This file is documentation + a future Hydra entry; train.py refuses to run until wired.
+
+stage: stage1_bc
+task: carton_flip_s2
+ic:
+  pos_mm: 100
+  yaw_deg: 20
+  demos: data/demos/demos_grid5x5_v1
+
+flexpi:
+  root_env: FLEXPI_ROOT   # export FLEXPI_ROOT=/workspace/flex-pi
+  # Prefer a flip-task Hydra config once authored; until then document intent:
+  # task: <your_flip_unified_flex_3cam_...>
+  pretrained_ckpt: models/pretrained/flexpi_release.pt   # placeholder path
+  action_dit_pretrained_path: models/pretrained/ActionDiT_linear_interp_Wan22_alphascale_1024hdim.pt
+  freeze_visual_backbone: true
+  train_action_dit: true
+  # Inference regime for smoke eval during BC
+  infer_joint_video: false
+  infer_joint_dino: false
+  infer_joint_pointmap: false
+
+optim:
+  learning_rate: 1.0e-4
+  batch_size: 2
+  num_epochs: null        # set explicitly before real run
+  mixed_precision: bf16
+
+output_dir: runs/stage1_bc

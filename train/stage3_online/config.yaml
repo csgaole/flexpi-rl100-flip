@@ -1,0 +1,14 @@
+stage: stage3_online
+policy_init: checkpoints/stage2_offline_latest.pt
+ic:
+  pos_mm: 100
+  yaw_deg: 20
+collect:
+  keep_failed_rollouts: true
+  retry_until_success: false
+  identical_ic_with_demos: true
+gate:
+  eval_script: eval/eval_closed_loop.sh
+  # episode count left unset — set explicitly (e.g. 500/ckpt style) before real gate
+  episodes_per_ckpt: null
+output_dir: runs/stage3_online

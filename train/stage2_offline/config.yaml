@@ -1,0 +1,13 @@
+# Stage-2 Offline RL — design defaults (all configurable)
+stage: stage2_offline
+policy_init: checkpoints/stage1_bc_latest.pt   # placeholder
+freeze_visual_backbone: true
+action_chunk_horizon: 32                      # H≈32
+kl_target: 6.0                                # KL≈6 design default
+stochastic_log_prob: true
+critic:
+  enabled: true
+  # fit before offline PG (RL100 order)
+offline:
+  steps: null                                 # set before real run
+output_dir: runs/stage2_offline

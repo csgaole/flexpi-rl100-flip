@@ -1,0 +1,46 @@
+# --- Training runs (never upload; large) ---
+runs/
+outputs/
+wandb/
+
+# --- Large binaries ignored by default ---
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.h5
+*.zarr/
+*.zarr
+*.bin
+*.onnx
+*.engine
+
+# --- Curated follow-trainable LFS paths (un-ignore when present) ---
+!data/
+!data/**
+!data/demos/
+!data/demos/**
+!models/
+!models/**
+!checkpoints/
+!checkpoints/**
+
+# Raw demo dumps outside the curated layout stay ignored unless LFS-tracked
+data/demos_raw/
+data/raw/
+
+# --- Python / caches / envs ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env
+.DS_Store
+
+# --- Backups / scratch ---
+*.bak*
+*.bak_*
+*.tmp
+/tmp_*/
